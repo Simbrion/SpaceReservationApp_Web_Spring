@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Delete space choosing</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body>
+
+<div th:if="${noSpacesMessage}">
+  <h2 th:text="${noSpacesMessage}"></h2>
+</div>
+
+<div th:if="${spaces}" class="list">
+  <p>Please choose the space you want to be deleted:</p>
+
+  <form th:action="@{/admin-menu/delete-space-confirmation}" method="post">
+    <div class="form-group" th:each="sp : ${spaces}">
+      <input type="radio" th:id="${sp.id}" th:value="${sp.id}" th:name="spaceId" onclick="enableSubmit()"/>
+      <label th:for="${sp.id}" th:text="${sp.name}"> ${sp.name} </label>
+    </div>
+
+    <button type="submit" id="submitBtn" disabled>Submit</button>
+  </form>
+
+  <script>
+    function enableSubmit() {
+      document.getElementById("submitBtn").disabled = false;
+    }
+  </script>
+</div>
+
+<form th:action="@{/admin-menu}" method="get">
+  <div class="container exit">
+    <button type="submit">Back to Administrator Menu</button>
+  </div>
+</form>
+
+</body>
+</html>

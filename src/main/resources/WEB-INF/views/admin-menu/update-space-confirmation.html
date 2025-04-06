@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Update space confirmation</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body>
+
+<h1>Space has been successfully changed!</h1>
+
+<form th:action="@{/admin-menu}" method="get">
+  <div class="container exit">
+    <button type="submit">Back to the administrator menu</button>
+  </div>
+</form>
+
+</body>
+
+</html>

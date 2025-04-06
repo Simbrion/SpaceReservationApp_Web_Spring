@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Create reservation form</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body>
+
+<div th:if="${noSpacesMessage}">
+  <h2 th:text="${noSpacesMessage}"></h2>
+</div>
+
+<div th:if="${startAfterEndError}">
+  <h6 th:text="${startAfterEndError}"></h6>
+</div>
+
+<div th:if="${startTimeOverlapsError}">
+  <h6 th:text="${startTimeOverlapsError}"></h6>
+</div>
+
+<div th:if="${endTimeOverlapsError}">
+  <h6 th:text="${endTimeOverlapsError}"></h6>
+</div>
+
+<div th:if="${reservation}" class="list">
+  <p>Please set parameters for your reservation:</p>
+
+  <form action="#" th:action="@{/customer-menu/create-reservation-process}" method="post" th:object="${reservation}">
+
+    <label>Space to be reserved:</label>
+
+    <div class="form-group" th:each="space, iterStat : ${spaces}">
+      <input type="radio" th:id="${space.id}" th:name="spaceId" th:value="${space.id}" th:checked="${iterStat.index == 0}" >
+      <label th:for="${space.id}" th:text="${space.name}"> ${space.name} </label><br>
+    </div>
+
+    <div class="form-group">
+      <label for="date">Reservation date:</label>
+      <input type="date" id="date" th:field="*{date}" />
+      <h6><span th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Date error</span></h6>
+    </div>
+
+    <div class="form-group">
+      <label for="startTime">Start time:</label>
+      <input type="time" id="startTime" th:field="*{startTime}" />
+      <h6><span th:if="${#fields.hasErrors('startTime')}" th:errors="*{startTime}">Start time error</span></h6>
+    </div>
+
+    <div class="form-group">
+      <label for="endTime">End time:</label>
+      <input type="time" id="endTime" th:field="*{endTime}" />
+      <h6><span th:if="${#fields.hasErrors('endTime')}" th:errors="*{endTime}">End time error</span></h6>
+    </div>
+
+    <button type="submit" id="submitBtn">Submit</button>
+
+  </form>
+
+</div>
+
+<form th:action="@{/customer-menu}" method="get">
+  <div class="container exit">
+    <button type="submit">Back to the customer menu</button>
+  </div>
+</form>
+
+</body>
+
+</html>

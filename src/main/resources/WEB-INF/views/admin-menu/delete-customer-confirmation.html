@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Delete customer confirmation</title>
+  <meta charset="UTF-8">
+</head>
+
+
+<link rel="stylesheet" th:href="@{/styles.css}">
+
+  <body>
+
+    <h1>The customer has been successfully deleted!</h1>
+
+
+  <form th:action="@{/admin-menu}" method="get">
+    <div class="container exit">
+      <button type="submit">Back to the administrator menu</button>
+    </div>
+  </form>
+
+
+  </body>
+
+</html>

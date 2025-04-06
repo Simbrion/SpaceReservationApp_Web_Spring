@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Delete space confirmation</title>
+</head>
+
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/styles.css}">
+
+  <body>
+
+  <h1>The space has been successfully deleted!</h1>
+
+
+  <br><br><br>
+
+  <form th:action="@{/admin-menu}" method="get">
+    <div class="container exit">
+      <button type="submit">Back to the administrator menu</button>
+    </div>
+  </form>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Update space choosing</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body>
+
+<div th:if="${noSpacesMessage}">
+  <h2 th:text="${noSpacesMessage}"></h2>
+</div>
+
+<div th:if="${spaces}" class="list">
+  <p>Please choose the space you want to change:</p>
+
+  <form action="#" th:action="@{/admin-menu/update-space-form}" method="post">
+    <div class="form-group" th:each="space : ${spaces}">
+      <input type="radio" th:id="'space_' + ${space.id}" th:name="spaceId" th:value="${space.id}" onclick="enableSubmit()">
+      <label th:for="'space_' + ${space.id}" th:text="${space.name}"> ${space.name} </label><br>
+    </div>
+
+    <button type="submit" id="submitBtn" disabled>Submit</button>
+  </form>
+
+  <script>
+    function enableSubmit() {
+      document.getElementById("submitBtn").disabled = false;
+    }
+  </script>
+</div>
+
+<form th:action="@{/admin-menu}" method="get">
+  <div class="container exit">
+    <button type="submit">Back to the administrator menu</button>
+  </div>
+</form>
+
+</body>
+
+</html>

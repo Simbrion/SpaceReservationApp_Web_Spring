@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Delete customer choosing</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body>
+
+<div th:if="${noCustomersMessage}">
+  <h2 th:text="${noCustomersMessage}"></h2>
+</div>
+
+
+<div th:if="${customers}" class="list">
+  <p> Please choose the customer you want to be deleted:</p>
+
+  <form action="#" th:action="@{/admin-menu/delete-customer-confirmation}" method="post" th:object="${customer}" >
+    <div class="form-group" th:each="c : ${customers}">
+      <input type="radio" th:id="'customer_' + ${c.id}" th:name="customer" th:value="${c.id}" onclick="enableSubmit()">
+      <label th:for="'customer_' + ${c.id}" th:text="${c.name}"> ${sp.name} </label><br>
+    </div>
+
+    <button type="submit" id="submitBtn" disabled>Submit</button>
+  </form>
+
+  <script>
+    function enableSubmit() {
+      document.getElementById("submitBtn").disabled = false;
+    }
+  </script>
+</div>
+
+<form th:action="@{/admin-menu}" method="get">
+  <div class="container exit">
+    <button type="submit">Back to Administrator Menu</button>
+  </div>
+</form>
+
+</body>
+
+</html>

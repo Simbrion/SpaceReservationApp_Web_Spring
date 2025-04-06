@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Registered customers screen</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body>
+
+<div th:if="${noCustomersMessage}">
+  <h2 th:text="${noCustomersMessage}"></h2>
+</div>
+
+<div th:if="${customers}" class="list">
+  <h2 style="text-align:center">There are the following customers registered in the system:</h2>
+
+  <table style="width:150px">
+    <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer : ${customers}">
+      <td th:text="${customer.name}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<form th:action="@{/admin-menu}" method="get">
+  <div class="container exit">
+    <button type="submit">Back to the administrator menu</button>
+  </div>
+</form>
+
+</body>
+
+</html>

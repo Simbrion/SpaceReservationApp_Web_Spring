@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Registered spaces screen</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body>
+
+<div th:if="${noSpacesMessage}">
+  <h2 th:text="${noSpacesMessage}"></h2>
+</div>
+
+<div th:if="${spaces}" class="list">
+  <h2>There are the following spaces registered in the system:</h2>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Space Type</th>
+      <th>Price per Hour (USD)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="space : ${spaces}">
+      <td th:text="${space.name}"></td>
+      <td th:text="${space.typeOfSpace}"></td>
+      <td th:text="${space.price}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<form th:action="@{/admin-menu}" method="get">
+  <div class="container exit">
+    <button type="submit">Back to the administrator menu</button>
+  </div>
+</form>
+
+</body>
+
+</html>
