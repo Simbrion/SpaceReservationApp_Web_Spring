@@ -10,8 +10,8 @@
 
 <p>Please choose parameters for the new space:</p>
 
-<div th:if="${spaceExistsErrorMessage}">
-  <h6><span th:text="${spaceExistsErrorMessage}"></span></h6>
+<div th:if="${spaceExistErrorMessage}">
+  <h6><span th:text="${spaceExistErrorMessage}"></span></h6>
 </div>
 
 <form th:action="@{/admin-menu/create-space-process}" method="post" th:object="${space}">
@@ -23,7 +23,7 @@
   </div>
 
   <div class="form-group">
-    <label for="price">Space price:</label>
+    <label for="price">Space price<br>(USD per hour):</label>
     <input type="number" id="price" th:field="*{price}" />
     <h6><span th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price error</span></h6>
   </div>
