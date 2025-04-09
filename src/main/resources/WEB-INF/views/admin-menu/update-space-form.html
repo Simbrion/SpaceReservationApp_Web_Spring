@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Update space form</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body>
+
+<p>Please choose parameters for space <span th:text="${space.name}"></span></p>
+
+<div th:if="${errorMessage}">
+  <h6>Space with this name already exists. Please choose another name.</h6>
+</div>
+
+<form th:action="@{/admin-menu/update-space-process}" method="post" th:object="${space}">
+
+  <input type="hidden" th:field="*{id}" />
+
+  <label for="name">Space name:</label>
+  <input type="text" id="name" th:field="*{name}" />
+  <span style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name input error</span>
+  <br>
+  <br>
+
+  <div class="form-group">
+    <label for="price">Space price:</label>
+    <input type="number" id="price" th:field="*{price}" />
+    <h6><span th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price input error</span></h6>
+  </div>
+
+  <fieldset>
+    <legend>Type of space:</legend>
+
+    <div class="form-group">
+      <input type="radio" th:field="*{typeOfSpace}" id="CONFERENCE_ROOM" value="CONFERENCE_ROOM">
+      <label for="CONFERENCE_ROOM">Conference room</label>
+      <h6><span th:if="${#fields.hasErrors('typeOfSpace')}" th:errors="*{typeOfSpace}">Type of space input error</span></h6>
+    </div>
+
+    <div class="form-group">
+      <input type="radio" th:field="*{typeOfSpace}" id="OPEN_SPACE" value="OPEN_SPACE">
+      <label for="OPEN_SPACE">Open space</label>
+      <h6><span th:if="${#fields.hasErrors('typeOfSpace')}" th:errors="*{typeOfSpace}">Type of space input error</span></h6>
+    </div>
+
+    <div class="form-group">
+      <input type="radio" th:field="*{typeOfSpace}" id="PRIVATE_ROOM" value="PRIVATE_ROOM">
+      <label for="PRIVATE_ROOM">Private room</label>
+      <h6><span th:if="${#fields.hasErrors('typeOfSpace')}" th:errors="*{typeOfSpace}">Type of space input error</span></h6>
+    </div>
+
+  </fieldset>
+
+  <button type="submit">Submit</button>
+
+</form>
+
+<form th:action="@{/admin-menu}" method="get">
+  <div class="container">
+    <button type="submit">Back to the administrator menu</button>
+  </div>
+</form>
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Create space form</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body>
+
+<p>Please choose parameters for the new space:</p>
+
+<div th:if="${spaceExistErrorMessage}">
+  <h6><span th:text="${spaceExistErrorMessage}"></span></h6>
+</div>
+
+<form th:action="@{/admin-menu/create-space-process}" method="post" th:object="${space}">
+
+  <div class="form-group">
+    <label for="name">Space name:</label>
+    <input type="text" id="name" th:field="*{name}" />
+    <h6><span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</span></h6>
+  </div>
+
+  <div class="form-group">
+    <label for="price">Space price<br>(USD per hour):</label>
+    <input type="number" id="price" th:field="*{price}" />
+    <h6><span th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price error</span></h6>
+  </div>
+
+  <div class="form-group">
+    <label>Type of space:</label>
+
+    <div>
+      <input type="radio" th:field="*{typeOfSpace}" id="CONFERENCE_ROOM" value="CONFERENCE_ROOM" />
+      <label for="CONFERENCE_ROOM">Conference room</label>
+    </div>
+    <br>
+
+    <div>
+      <input type="radio" th:field="*{typeOfSpace}" id="OPEN_SPACE" value="OPEN_SPACE" />
+      <label for="OPEN_SPACE">Open space</label>
+    </div>
+    <br>
+
+    <div>
+      <input type="radio" th:field="*{typeOfSpace}" id="PRIVATE_ROOM" value="PRIVATE_ROOM" />
+      <label for="PRIVATE_ROOM">Private room</label>
+    </div>
+    <br>
+
+    <h6><span th:if="${#fields.hasErrors('typeOfSpace')}" th:errors="*{typeOfSpace}">Type error</span></h6>
+  </div>
+
+  <button type="submit" id="submitBtn" >Submit</button>
+
+</form>
+
+<form th:action="@{/admin-menu}" method="get">
+  <div class="container exit">
+    <button type="submit">Back to Administrator Menu</button>
+  </div>
+</form>
+
+</body>
+</html>

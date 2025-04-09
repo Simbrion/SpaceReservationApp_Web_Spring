@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Cancel reservation confirmation</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body>
+
+<h1>The reservation has been successfully cancelled!</h1>
+
+<form th:action="@{/customer-menu}" method="get">
+  <div class="container exit">
+    <button type="submit">Back to the customer menu</button>
+  </div>
+</form>
+
+</body>
+
+</html>

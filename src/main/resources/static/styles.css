@@ -1,0 +1,123 @@
+body {
+  background-color: black;
+}
+
+h1, h2, h6, p, label {
+  font-family: 'Courier New';
+  text-align: center;
+  color: LimeGreen;
+  background-color: black;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 1rem;
+}
+
+h6 {
+  font-size: 15px;
+  color: Red;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+p {
+  font-size: 20px;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+button {
+  font-size: 20px;
+  background-color: black;
+  color: LimeGreen;
+  border-color: LimeGreen;
+  border-width: 4px;
+  font-family: 'Courier New';
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.15);
+    background-color: DarkGreen;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+label {
+  font-size: 18px;
+  margin-left: 1rem;
+}
+
+input {
+  color: LimeGreen;
+  background-color: black;
+  border: 1px solid LimeGreen;
+  margin-left: 1rem;
+  margin-left: 0.5rem;
+}
+
+.list {
+  font-size: 24px;
+  color: LimeGreen;
+  background-color: black;
+  text-align: left;
+  padding-left: 20px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.exit {
+  margin-top: 2rem;
+}
+
+table {
+  width: 80%;
+  margin: auto;
+  border-collapse: collapse;
+  border: 2px solid LimeGreen;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+th, td {
+  font-size: 16px;
+  color: LimeGreen;
+  background-color: black;
+  text-align: center;
+  border: 1px solid LimeGreen;
+  padding: 10px;
+}
+
+th {
+  font-size: 18px;
+  background-color: #0b3e09;
+}

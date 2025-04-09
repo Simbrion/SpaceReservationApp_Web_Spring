@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Admin menu</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body>
+
+<h1>Administrator menu</h1>
+
+<form th:action="@{/admin-menu/registered-spaces-screen}" method="get">
+  <div class="container">
+    <button type="submit">Show available spaces</button>
+  </div>
+</form>
+
+<form th:action="@{/admin-menu/create-space-form}" method="get">
+  <div class="container">
+    <button type="submit">Create new space</button>
+  </div>
+</form>
+
+<form th:action="@{/admin-menu/update-space-choosing}" method="get">
+  <div class="container">
+    <button type="submit">Change existing space</button>
+  </div>
+</form>
+
+<form th:action="@{/admin-menu/delete-space-choosing}" method="get">
+  <div class="container">
+    <button type="submit">Delete an existing space</button>
+  </div>
+</form>
+
+<form th:action="@{/admin-menu/registered-customers-screen}" method="get">
+  <div class="container">
+    <button type="submit">Show registered customers</button>
+  </div>
+</form>
+
+<form th:action="@{/admin-menu/delete-customer-choosing}" method="get">
+  <div class="container">
+    <button type="submit">Delete an existing customer</button>
+  </div>
+</form>
+
+<form th:action="@{/admin-menu/registered-reservations-screen}" method="get">
+  <div class="container">
+    <button type="submit">Show all reservations</button>
+  </div>
+</form>
+
+<form th:action="@{/}" method="get">
+  <div class="container exit">
+    <button type="submit">Back to main menu</button>
+  </div>
+</form>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Customer login</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body>
+
+<p>Please provide your name:</p>
+
+<div th:if="${loginRequiredError}">
+    <h6><span th:text="${loginRequiredError}"></span></h6>
+</div>
+
+<form action="#" th:action="@{/customer-menu/customer-login-process}" method="post" th:object="${customer}">
+
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}" />
+        <h6><span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</span></h6>
+    </div>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+<form th:action="@{/}" method="get">
+    <div class="container exit">
+        <button type="submit">Back to the main menu</button>
+    </div>
+</form>
+
+</body>
+
+</html>

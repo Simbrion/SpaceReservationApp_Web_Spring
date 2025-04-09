@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Cancel reservation choosing</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body>
+
+<div th:if="${noReservationsMessage}">
+  <h2 th:text="${noReservationsMessage}"></h2>
+</div>
+
+<div th:if="${reservationNotFoundMessage}">
+  <h6 th:text="${reservationNotFoundMessage}"></h6>
+</div>
+
+<div th:if="${customerReservations}" class="list">
+  <p>Please choose the reservation you want to cancel:</p>
+
+  <form th:action="@{/customer-menu/cancel-reservation-confirmation}" method="post" th:object="${reservation}">
+    <div class="form-group" th:each="r : ${customerReservations}">
+      <input type="radio" th:id="${r.id}" th:value="${r.id}" th:name="reservation" onclick="enableSubmit()">
+      <label th:for="${r.id}" th:text="${r.spaceName} + ' | ' +
+                                            ${#temporals.format(r.date, 'dd/MM/yyyy')} + ' | ' +
+                                            ${#temporals.format(r.startTime, 'HH:mm')} + ' - ' +
+                                            ${#temporals.format(r.endTime, 'HH:mm')}"></label>
+    </div>
+
+    <button type="submit" id="submitBtn" disabled>Submit</button>
+  </form>
+
+  <script>
+    function enableSubmit() {
+      document.getElementById("submitBtn").disabled = false;
+    }
+  </script>
+</div>
+
+<form th:action="@{/customer-menu}" method="get">
+  <div class="container exit">
+    <button type="submit">Back to Administrator Menu</button>
+  </div>
+</form>
+
+</body>
+
+</html>

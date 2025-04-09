@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Registered reservations screen</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body>
+
+<div th:if="${noReservationsMessage}">
+  <h2 th:text="${noReservationsMessage}"></h2>
+</div>
+
+<div th:if="${reservations}" class="list">
+  <h2>There are the following reservations registered in the system:</h2>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Space</th>
+      <th>Customer</th>
+      <th>Date</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="reservation : ${reservations}">
+      <td th:text="${reservation.spaceName}"></td>
+      <td th:text="${reservation.customerName}"></td>
+      <td th:text="${#temporals.format(reservation.date, 'dd/MM/yyyy')}"></td>
+      <td th:text="${#temporals.format(reservation.startTime, 'HH:mm')}"></td>
+      <td th:text="${#temporals.format(reservation.endTime, 'HH:mm')}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<form th:action="@{/admin-menu}" method="get">
+  <div class="container exit">
+    <button type="submit">Back to the administrator menu</button>
+  </div>
+</form>
+
+</body>
+
+</html>
